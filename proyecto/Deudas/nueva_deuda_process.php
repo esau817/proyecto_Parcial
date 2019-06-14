@@ -3,13 +3,10 @@ include("../config.php");
 include("nueva_deuda.php");
  
  
-// Escape user inputs for security
 $id_deudor = mysqli_real_escape_string($conn, $_REQUEST['id_deudor']);
 $deuda = mysqli_real_escape_string($conn, $_REQUEST['deuda']);
-$fecha = mysqli_real_escape_string($conn, $_REQUEST['fecha']);
  
-// Attempt insert query execution
-$sql = "INSERT INTO deudas (id_deudor, deuda, fecha) VALUES ('$id_deudor', '$deuda', '$fecha')";
+$sql = "INSERT INTO deudas (id_deudor, deuda) VALUES ('$id_deudor', '$deuda')";
 $result = mysqli_query($conn, $sql);
 
 if(mysqli_query($conn, $sql)){
@@ -18,6 +15,6 @@ if(mysqli_query($conn, $sql)){
     echo "ERROR: No se pudo ejecutar $sql. " . mysqli_error($conn);
 }
  
-// Close connection
+
 mysqli_close($conn);
 ?>

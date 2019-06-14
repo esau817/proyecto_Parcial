@@ -15,10 +15,6 @@
         <label for="deuda">Deuda</label>
         <input type="number" name="deuda" id="deuda">
     </p>
-    <p>
-        <label for="fecha">Fecha de Pago</label>
-        <input type="date" name="fecha" id="fecha">
-    </p>
     <input type="submit" value="Submit">
 
 <h1><a href = "payments.php">Volver</a><h1>

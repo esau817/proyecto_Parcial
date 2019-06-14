@@ -2,17 +2,17 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Agregar nueva deuda</title>
+<title>Pagar deuda</title>
 </head>
 <body>
-<form action="nueva_deuda_process.php" method="post">
+<form action="cobrar_deuda_process.php" method="post">
     <p>
-        <label for="id_deudor">ID Usuario</label>
-        <input type="text" name="id_deudor" id="id_deudor">
+        <label for="id_deuda">ID Deuda</label>
+        <input type="text" name="id_deuda" id="id_deuda">
     </p>
     <p>
-        <label for="deuda">Deuda</label>
-        <input type="number" name="deuda" id="deuda">
+        <label for="deuda">Pago</label>
+        <input type="number" name="pago" id="pago">
     </p>
     <p>
         <label for="fecha">Fecha de Pago</label>

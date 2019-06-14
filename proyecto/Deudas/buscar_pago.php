@@ -72,7 +72,19 @@ else
 <body>
 <h1><a href = "payments.php">Volver</a><h1>
 
-
+<style> 
+      h1{ 
+        color: green; 
+        text-align: center; 
+      } 
+      div.one{ 
+        margin-top: 40px; 
+        text-align: center; 
+      } 
+      button{ 
+        margin-top: 10px; 
+      } 
+    </style>
 
 </table>
 </center>
