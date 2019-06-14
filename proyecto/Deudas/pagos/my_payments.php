@@ -22,36 +22,37 @@
 <body>
  <table>
  <tr>
-  <th>Id Deuda</th> 
-  <th>ID Usuario deudor</th> 
-  <th>Usuario deudor</th> 
-  <th>Deuda</th>
-  <th>Fecha de asignación</th>
+  <th>Id Pago</th> 
+  <th>ID Deuda</th> 
+  <th>Deuda inicial</th>
+  <th>Pago</th> 
+  <th>Deuda actual</th>
+  <th>Fecha de pago</th>
  </tr>
 
  <?php
-include("../config.php");
+//include("./../config.php");
+include __DIR__ . '/../../config.php';
 
 //Hacemos la consulta a la BD para extraer la información
   
-$sql = "SELECT deudas.id, deudas.id_deudor, my_user.username, FORMAT(deudas.deuda, 2), 
-deudas.fecha FROM deudas join my_user on deudas.id_deudor = my_user.id";
+$sql = "SELECT pagos.id, pagos.id_deuda, deudas.deuda as actual, FORMAT(pagos.pago, 2),
+(deudas.deuda-pagos.pago) as estado, pagos.fecha 
+FROM pagos join deudas on pagos.id_deuda = deudas.id";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
 
 //Imprimimos la tabla
    while($row = $result->fetch_assoc()) {
-    echo "<tr><td>" . $row["id"]. "</td><td>" . $row["id_deudor"]. "</td><td>" . $row["username"]. "</td><td>"
-  . $row["FORMAT(deudas.deuda, 2)"]. "</td><td>" . $row["fecha"]. "</td></tr>" ;
+    echo "<tr><td>" . $row["id"]. "</td><td>" . $row["id_deuda"]. "</td><td>" . $row["actual"]. "</td><td>" 
+    . $row["FORMAT(pagos.pago, 2)"]. "</td><td>". $row["estado"]. "</td><td>" . $row["fecha"]. "</td></tr>" ;
 }
 echo "</table>";
 } else { echo "0 results"; }
 $conn->close();
 ?>
-<h1><a href = "nueva_deuda.php">Agregar nueva deuda</a></h1>
-<h1><a href = "buscar_pago.php">Buscar deuda por fecha</a></h1>
-<h1><a href = "./pagos/my_payments.php">Ver pagos</a></h1>
-<h1><a href = "../admin_welcome.php">Volver</a></h1>
+<h1><a href = "buscar_pago_hecho.php">Buscar pago por fecha</a></h1>
+<h1><a href = "../../admin_welcome.php">Volver</a></h1>
 
 <style> 
    h1{

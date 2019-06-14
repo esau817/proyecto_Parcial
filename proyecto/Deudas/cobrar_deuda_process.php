@@ -7,8 +7,8 @@ $id_deuda = mysqli_real_escape_string($conn, $_REQUEST['id_deuda']);
 $pago = mysqli_real_escape_string($conn, $_REQUEST['pago']);
 $fecha = mysqli_real_escape_string($conn, $_REQUEST['fecha']);
  
-$sql = "UPDATE deudas SET pago = '$pago', fecha = '$fecha'
-WHERE id = '$id_deuda'";
+$sql = $sql = "INSERT INTO pagos(id_deuda, pago, fecha)
+VALUES ('$id_deuda', '$pago', '$fecha')";
 $result = mysqli_query($conn, $sql);
 
 if(mysqli_query($conn, $sql)){

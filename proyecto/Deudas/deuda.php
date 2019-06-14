@@ -21,6 +21,7 @@
 <body>
  <table>
  <tr>
+  <th>Id</th>
   <th>Id Deuda</th> 
   <th>Deuda</th>
   <th>Fecha Pago</th>
@@ -32,14 +33,15 @@ include("../config.php");
 
 //Hacemos la consulta a la BD para extraer la información
   
-$sql = "SELECT id, FORMAT(deuda, 2), fecha  from deudas 
+$sql = "SELECT pagos.id, pagos.id_deuda, FORMAT(deudas.deuda, 2), deudas.fecha  
+from pagos join deudas on pagos.id_deuda = deudas.id
  WHERE id_deudor='{$_SESSION['login_user']}'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
 
 //Imprimimos la tabla
    while($row = $result->fetch_assoc()) {
-    echo "<tr><td>" . $row["id"]. "</td><td>" . $row["FORMAT(deudas.deuda, 2)"]. "</td><td>" . $row["fecha"]. "</td></tr>";
+    echo "<tr><td>" . $row["id"].  $row["id_deuda"]. "</td><td>" . $row["FORMAT(deudas.deuda, 2)"]. "</td><td>" . $row["fecha"]. "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }

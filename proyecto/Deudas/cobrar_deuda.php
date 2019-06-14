@@ -20,7 +20,7 @@
     </p>
     <input type="submit" value="Submit">
 
-<h1><a href = "payments.php">Volver</a><h1>
+<h1><a href = "deuda.php">Volver</a><h1>
 </form>
 </body>
 </html>
